@@ -2,8 +2,9 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" />
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
@@ -33,40 +34,56 @@
     </nav>
     <section ng-hide="urlDone">
         <form ng-submit="urlDone = true">
-        <input type="text" ng-model="url"/>
-        <hr>
-        <button class="btn btn-primary" ng-disabled="!url">Next</button>
+            <input type="text" class="form-control input-lg" ng-model="url" />
+            <hr>
+            <div class="text-center">
+                <button class="btn btn-primary" ng-disabled="!url">
+                    <span class="fa fa-fw fa-arrow-right"></span>
+                </button>
+            </div>
         </form>
     </section>
     <section ng-show="urlDone && (!graphDone)">
         <form ng-submit="graphDone=true">
-        <button class="btn btn-primary" type="button" ng-click="graph='bar'">
-            Bar
-        </button>
-        <button class="btn btn-primary" type="button" ng-click="graph='scatter'">
-            Scatter
-        </button>
-        <button class="btn btn-primary" type="button" ng-click="graph='line'">
-            Line
-        </button>
-        <button class="btn btn-primary" type="button" ng-click="graph='pie'">
-            Pie
-        </button>
-        <hr>
-        <button class="btn btn-primary" type="button" ng-click="urlDone = false">
-            Previous
-        </button>
-        <button class="btn btn-primary" ng-disabled="!graph">
-            Next
-        </button>
+            <button class="btn btn-primary" type="button" ng-click="graph='bar'">
+                Bar
+            </button>
+            <button class="btn btn-primary" type="button" ng-click="graph='scatter'">
+                Scatter
+            </button>
+            <button class="btn btn-primary" type="button" ng-click="graph='line'">
+                Line
+            </button>
+            <button class="btn btn-primary" type="button" ng-click="graph='pie'">
+                Pie
+            </button>
+            <hr>
+            <div class="text-center">
+                <div class="btn-group">
+                    <button class="btn btn-primary" type="button" ng-click="urlDone = false">
+                        <span class="fa fa-fw fa-arrow-left"></span>
+                    </button>
+                    <button class="btn btn-primary" ng-disabled="!graph">
+                        <span class="fa fa-fw fa-arrow-right"></span>
+                    </button>
+                </div>
+            </div>
         </form>
     </section>
     <section ng-show="urlDone && graphDone">
         drag and drop stuff
         <hr>
-        <button class="btn btn-primary" ng-click="graphDone = false">
-            Previous
-        </button>
+        <div class="text-center">
+            <div class="btn-group">
+
+                <button class="btn btn-primary" ng-click="graphDone = false">
+                    <span class="fa fa-fw fa-arrow-left"></span>
+                </button>
+                <button class="btn btn-primary">
+                    <span class="fa fa-fw fa-arrow-right"></span>
+                </button>
+            </div>
+        </div>
     </section>
     <hr>
     <pre>
