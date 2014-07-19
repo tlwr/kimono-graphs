@@ -49,18 +49,23 @@
     </section>
     <section ng-show="urlDone && (!graphDone)">
         <form ng-submit="graphDone=true">
-            <button class="btn btn-primary" type="button" ng-click="graph='bar'">
-                Bar
-            </button>
-            <button class="btn btn-primary" type="button" ng-click="graph='scatter'">
-                Scatter
-            </button>
-            <button class="btn btn-primary" type="button" ng-click="graph='line'">
-                Line
-            </button>
-            <button class="btn btn-primary" type="button" ng-click="graph='pie'">
-                Pie
-            </button>
+            <div class="text-center">
+                <button class="btn btn-default {{graph=='bar' ? 'btn-primary' : ''}}" type="button" ng-click="graph='bar'">
+                    <img src="icons/bar.png" />
+                </button>
+                <button class="btn btn-default {{graph=='scatter' ? 'btn-primary' : ''}}" type="button" ng-click="graph='scatter'">
+                    <img src="icons/scatter.png" />
+                </button>
+                <button class="btn btn-default {{graph=='line' ? 'btn-primary' : ''}}" type="button" ng-click="graph='line'">
+                    <img src="icons/line.png" />
+                </button>
+                <button class="btn btn-default {{graph=='pie' ? 'btn-primary' : ''}}" type="button" ng-click="graph='pie'">
+                    <img src="icons/pie.png" />
+                </button>
+                <button class="btn btn-default {{graph=='donut' ? 'btn-primary' : ''}}" type="button" ng-click="graph='donut'">
+                    <img src="icons/donut.png" />
+                </button>
+            </div>
             <hr>
             <div class="text-center">
                 <div class="btn-group">
