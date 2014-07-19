@@ -12,34 +12,61 @@
 </head>
 
 <body ng-app="gown" ng-controller="intro" class="container-fluid">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Dressing Gown</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                </ul>
+            </div>
+        </div>
+    </nav>
     <section ng-hide="urlDone">
+        <form ng-submit="urlDone = true">
         <input type="text" ng-model="url"/>
         <hr>
-        <button ng-click="urlDone = true" ng-disabled="url == ''">Next</button>
+        <button class="btn btn-primary" ng-disabled="!url">Next</button>
+        </form>
     </section>
     <section ng-show="urlDone && (!graphDone)">
-        <button ng-click="graph='bar'">
+        <form ng-submit="graphDone=true">
+        <button class="btn btn-primary" type="button" ng-click="graph='bar'">
             Bar
         </button>
-        <button ng-click="graph='scatter'">
+        <button class="btn btn-primary" type="button" ng-click="graph='scatter'">
             Scatter
         </button>
-        <button ng-click="graph='line'">
+        <button class="btn btn-primary" type="button" ng-click="graph='line'">
             Line
         </button>
-        <button ng-click="graph='pie'">
+        <button class="btn btn-primary" type="button" ng-click="graph='pie'">
             Pie
         </button>
         <hr>
-        <button ng-click="urlDone = false">
+        <button class="btn btn-primary" type="button" ng-click="urlDone = false">
             Previous
         </button>
-        <button ng-click="graphDone = true" ng-disabled="graph == ''">
+        <button class="btn btn-primary" ng-disabled="!graph">
             Next
         </button>
+        </form>
     </section>
     <section ng-show="urlDone && graphDone">
         drag and drop stuff
+        <hr>
+        <button class="btn btn-primary" ng-click="graphDone = false">
+            Previous
+        </button>
     </section>
     <hr>
     <pre>
