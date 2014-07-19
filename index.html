@@ -3,19 +3,51 @@
 
 <head>
     <script src="bower_components/platform/platform.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <link rel="import" href="bower_components/font-roboto/roboto.html">
     <link rel="stylesheet" href="bower_components/core-toolbar/core-toolbar.css">
     <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
     <link rel="stylesheet" href="bower_components/core-header-panel/core-header-panel.css">
     <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
+    <link rel="stylesheet" href="bower_components/paper-button/paper-button.css">
+    <link rel="import" href="bower_components/paper-button/paper-button.html">
+    <script src="app.js"></script>
 </head>
 
-<body fullbleed layout vertical>
-    <core-header-panel flex>
-        <core-toolbar>
-            <div>Dressing Gown</div>
-        </core-toolbar>
-    </core-header-panel>
+<body ng-app="gown" ng-controller="intro">
+    <section ng-hide="urlDone">
+        <input type="text" ng-model="url"/>
+        <hr>
+        <button ng-click="urlDone = true" ng-disabled="url == ''">Next</button>
+    </section>
+    <section ng-show="urlDone && (!graphDone)">
+        <button ng-click="graph='bar'">
+            Bar
+        </button>
+        <button ng-click="graph='scatter'">
+            Scatter
+        </button>
+        <button ng-click="graph='line'">
+            Line
+        </button>
+        <button ng-click="graph='pie'">
+            Pie
+        </button>
+        <hr>
+        <button ng-click="urlDone = false">
+            Previous
+        </button>
+        <button ng-click="graphDone = true" ng-disabled="graph == ''">
+            Next
+        </button>
+    </section>
+    <section ng-show="urlDone && graphDone">
+        drag and drop stuff
+    </section>
+    <pre>
+    {{url}}
+    {{graph}}
+    </pre>
 </body>
 
 </html>
