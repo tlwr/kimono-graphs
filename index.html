@@ -34,7 +34,11 @@
     </nav>
     <section ng-hide="urlDone">
         <form ng-submit="urlDone = true">
-            <input type="text" class="form-control input-lg" ng-model="url" />
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <textarea class="form-control input-lg" ng-model="url" rows="3"></textarea>
+                </div>
+            </div>
             <hr>
             <div class="text-center">
                 <button class="btn btn-primary" ng-disabled="!url">
@@ -71,7 +75,18 @@
         </form>
     </section>
     <section ng-show="urlDone && graphDone">
-        drag and drop stuff
+        <div class="row">
+            <div class="col-md-9">
+                <div class="well">
+                    visualisation
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="well">
+                    property controls
+                </div>
+            </div>
+        </div>
         <hr>
         <div class="text-center">
             <div class="btn-group">
