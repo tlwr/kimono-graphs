@@ -1,13 +1,3 @@
-.graph-buttons img{
-    margin: 10px;
-}
-
-.graph-buttons .btn-primary img {
-    -webkit-filter: invert(1);
-    -moz-filter: invert(1);
-    -ms-filter: invert(1);
-    filter: invert(1);
-}
 
 .btn *{
     margin: 10px;
@@ -32,6 +22,22 @@
     z-index: 10;
 }
  
+#graph {
+    @height: 300px;
+ 
+    margin: 0 auto;
+    height: @height;
+    border: 2px solid #ccc;
+    border-top-width: 0;
+    border-right-width: 0;
+    position: relative;
+    
+    #values-placeholder {
+        .placeholder;
+        line-height: @height;
+    }
+}
+ 
 #label {
     margin-top: 20px;
     position: relative;
@@ -45,11 +51,10 @@
 }
  
 .droppable {
+    position: absolute;
     width: 100%;
-    min-height: 50px;
-    padding-bottom: 50px;
+    height: 100%;
     list-style-type: none;
-    z-index: 1000;
  
     &.active {
         background: #fbf9ee;
@@ -82,6 +87,15 @@ ul {
     }
 }
  
+#label-name {
+    position: relative;
+    input {
+        width: 300px;
+        margin: 20px auto;
+        text-align: center;
+    }
+}
+ 
 #title {
     padding-bottom: 10px;
 }
@@ -90,4 +104,126 @@ ul {
     ul {
         padding: 0;
     }
+}
+
+
+
+
+@black:#222;
+@dark-grey: #808080;
+
+.graph-buttons img{
+    margin: 10px;
+}
+
+.graph-buttons .btn-primary img {
+    -webkit-filter: invert(1);
+    -moz-filter: invert(1);
+    -ms-filter: invert(1);
+    filter: invert(1);
+}
+
+.title{
+    text-align: left;
+     color: white;
+     margin-left: 50%;
+     padding-right: 20%;
+    
+}
+.sub-title{
+    text-align: left;
+    color: @dark-grey;
+    margin-left:50%;
+     padding-right: 20%;
+    
+}
+.btn-entry{
+    font-size: 1.5em;
+    color: @dark-grey;
+    border: solid;
+    border-color: white !important;
+    border-radius: 2px;
+    border-width:1.600000023841858px;
+    margin-left: 50%;   
+}
+.btn-entry:hover{
+    color: white;
+    font-size: 1.5em;
+    border: solid;
+    background-color: @dark-grey;
+    border-color: white !important;
+    border-radius: 2px;
+    border-width:1.600000023841858px;
+    margin-left: 50%;   
+}
+.btn-entry:focus{
+    color: white;
+    font-size: 1.5em;
+    border: solid;
+    background-color: @dark-grey;
+    border-color: white !important;
+    border-radius: 2px;
+    border-width:1.600000023841858px;
+    margin-left: 50%;   
+}
+.btn-entry:active{
+    color: white;
+    font-size: 1.5em;
+    border: solid;
+    background-color: @dark-grey;
+    border-color: white;
+    border-radius: 2px;
+    border-width:1.600000023841858px;
+    margin-left: 50%;   
+}
+
+body{
+    background-color: @black;
+
+}
+.placer{
+    margin-top: 40vh;
+}
+.input-lg{
+    margin-left: 50%;
+    width: 40%;
+    max-width: 690px;
+    background-color: transparent;
+    color: white;
+    border-radius: 2px;
+    vertical-align: right;
+    text-align: right;
+
+}
+
+.input-lg:hover{
+    border-radius: 2px;
+    background-color: @dark-grey;
+    color: white;
+   border-color: white;
+}
+.input-lg:focus{
+    border-radius: 2px;
+    background-color: @dark-grey;
+    color: white;
+    border-color: white;
+}
+.btn-primary{
+    background-image: none;
+    border-color: white;
+    text-shadow: none;
+    background-color: transparent !important;
+}
+
+.btn-primary:hover{
+    background-color: transparent !important;
+}
+.btn-primary:active{
+        border-color: white;
+    background-color: transparent !important;
+}
+
+.btn-primary:focus{
+    color: @dark-grey;
+    background-color: transparent !important;
 }
