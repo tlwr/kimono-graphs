@@ -11,7 +11,13 @@
             font-size: 24px;
         }
     }
+
+    * {
+        user-select: none;
+    }
 }
+
+#pre-message {color: @dark-grey;}
  
 .placeholder {
     font-size: 30px;
@@ -305,10 +311,23 @@ body{
 }
 
 #titleInput {
+    margin-bottom:25px;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+.c3-axis-x{
+    fill:white;
+    font-family: Lato;
+}
+.c3-axis-y, .c3-legend-item text{
+    fill:white;
+    font-family: Lato;
+}
+.c3 line , .c3 path{
+    stroke: white;
 }
 
 .input-vasu{

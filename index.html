@@ -57,8 +57,9 @@
                             <input type="text" id="titleInput" placeholder="Chart title" class="form-control input-vasu" ng-model="title" ng-blur="drawChart()" />
                         </div>
                         <div id="chart" ng-show="dirty" style="width: 600px; height: 360px; margin-left: auto; margin-right: auto; border-radius: 2px; border-color: white;"></div>
-                        <div ng-hide="dirty" style="width: 600px; height: 360px; margin-left: auto; margin-right: auto; border-radius: 2px; border-color: white; display: flex; justify-content: center; align-items:center;">
-                            <h3>Waiting for Chart Inputs.</h3>
+                        <div ng-hide="dirty" style="width: 600px; height: 360px; margin-left: auto; margin-right: auto; border-radius: 2px; border-color: white; display: flex; flex-direction: column; justify-content: center; align-items:center;" id="pre-message">
+                            <h2>Waiting for Chart Inputs.</h2>
+                            <h4>Drag and Drop <span class="fa fa-fw fa-arrow-right"></span></h4>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -89,7 +90,7 @@
                 <ul class="well list-unstyled">
                     <li ng-repeat="(name, objects) in collections">
                         {{ name }}
-                        <ul class="collections" id="collection_{{name}}">
+                        <ul class="collections list-unstyled text-center" id="collection_{{name}}">
                             <li ng-repeat="(property, value) in objects[0]"
                                 class="property"
                                 data-parent="collection_{{name}}"
