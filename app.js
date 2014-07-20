@@ -23,6 +23,7 @@ var getLabel = function() {
             property: label.data('property')
         };
     }
+    return {};
 };
 var getValues = function() {
     var values = [];
