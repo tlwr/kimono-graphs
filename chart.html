@@ -131,14 +131,13 @@
 			};
 			var label = { collection: "collection1", property: "Year" };
 			var values = [ 
-				{ collection: "collection1", property: "blocks", label: "Blocks" },
-				{ collection: "collection1", property: "orb", label: "Offensive Rebounds" },
-				{ collection: "collection1", property: "steals", label: "Steals" },
-				{ collection: "collection1", property: "threes", label: "Threes" }
+				{ collection: "collection1", property: "blocks", label: "Blocks" }
 			];
 			renderChart( response, "scatter", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );
-			setTimeout(function(){reloadChart( response, "line", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );}, 1500);
-			setTimeout(function(){reloadChart( response, "bar", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );}, 3000);
+			setTimeout(function(){values.push({ collection: "collection1", property: "orb", label: "Offensive Rebounds" });reloadChart( response, "line", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );}, 1500);
+			setTimeout(function(){values.push({ collection: "collection1", property: "steals", label: "Steals" });reloadChart( response, "bar", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );}, 3000);
+			setTimeout(function(){values.push( { collection: "collection1", property: "threes", label: "Threes" } );reloadChart( response, "spline", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );}, 4500);
+			setTimeout(function(){reloadChart( response, "bar", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );}, 6000);
 		} );
 
 		</script>
