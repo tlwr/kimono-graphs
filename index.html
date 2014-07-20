@@ -21,7 +21,8 @@
     <title>kimono graphs &mdash; Graph the web</title>
 </head>
 
-<body ng-app="gown" ng-controller="intro" class="container-fluid" id="gown">
+<body ng-app="gown" ng-controller="intro" id="gown"
+      ng-class="{image: !urlDone, 'container-fluid': true}">
     <div class="placer" ng-hide="urlDone">
         <nav role="navigation" class="text-center">
             <img src="icons/logo.png" id="logo" />
