@@ -110,9 +110,12 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
         $scope.drawChart = function(){
             var vals = getValues();
             var lab = getLabel();
-            if(vals.length == 0) return;
-            if(lab == {}) return;
-            if($scope.dirty){
+
+            if (!lab.length || !vals.length) {
+                return;
+            }
+
+            if ($scope.dirty) {
                 setTimeout(function(){
                     reloadChart(apiData, $scope.type, vals, lab, $scope.xaxis, $scope.yaxis, $scope.title);
                 },150);
