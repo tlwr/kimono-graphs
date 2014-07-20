@@ -22,12 +22,13 @@
 </head>
 
 <body ng-app="gown" ng-controller="intro" class="container-fluid" id="gown">
+     <div class="placer">
     <nav role="navigation" class="text-center">
-        <h1><img src="icons/logo.png" /></h1>
-        <h2>kimono graphs</h2>
-        <h6>Graph the web.</h6>
+  
+        <h2 class="title">kimono graphs</h2>
+        <h6 class="sub-title">Graph the web.</h6>
     </nav>
-    <hr>
+
     <section ng-hide="urlDone">
         <form ng-submit="urlDone = true; connect()" id="urlForm">
             <div class="form-group">
@@ -36,13 +37,14 @@
             <div class="form-group">
                 <input type="text" class="form-control input-lg" ng-model="apiKey" placeholder="API KEY" rows="3">
             </div>
-            <hr>
-            <div class="text-center">
-                <button class="btn btn-primary" ng-disabled="!apiId || !apiKey">
-                    <span class="fa fa-fw fa-arrow-right"></span>
+      
+            <div class="text-right">
+                <button class="btn btn-primary btn-entry" ng-disabled="!apiId || !apiKey">
+                    Enter
                 </button>
             </div>
         </form>
+        </div>
     </section>
     <section ng-show="urlDone">
         <div class="row">
@@ -50,22 +52,26 @@
                 <div class="row">
                     <div class="col-md-9">
                         <div id="title">
-                            <input type="text" placeholder="Chart title" class="form-control" ng-model="title" ng-blur="drawChart()" />
+                            <input type="text" placeholder="Chart title" class="form-control input-vasu" ng-model="title" ng-blur="drawChart()" />
                         </div>
-                        <div id="chart" style="width: 600px; height: 360px; margin-left: auto; margin-right: auto;"></div>
+                        <div id="chart" ng-show="dirty" style="width: 600px; height: 360px; margin-left: auto; margin-right: auto; border-radius: 2px; border-color: white;"></div>
+                        <div ng-hide="dirty" style="width: 600px; height: 360px; margin-left: auto; margin-right: auto; border-radius: 2px; border-color: white; display: flex; justify-content: center; align-items:center;">
+                            <h3>Waiting for Chart Inputs.</h3>
+                        </div>
                         <div id="label">
                             <div>
                                 <ul id="label-list" class="droppable list-unstyled"></ul>
                             </div>
                             <div id="label-name">
-                                <input type="text" placeholder="X Axis Label" class="form-control" ng-model="xaxis" ng-blur="drawChart()"/>
+                                <input type="text" placeholder="X Axis Label" class="form-control input-vasu" ng-model="xaxis" ng-blur="drawChart()"/>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <input type="text" placeholder="Y Axis Label" class="form-control" ng-model="yaxis" ng-blur="drawChart()">
+                        <input type="text" placeholder="Y Axis Label" class="form-control input-vasu" ng-model="yaxis" ng-blur="drawChart()">
                         <ul id="values-list" class="droppable list-unstyled"></ul>
                     </div>
+                    <button style="display:none;" id="dirtybutton" ng-click="dirty = !dirty"></button>
                 </div>
             </div>
             <div class="col-md-3" id="collection">
@@ -109,8 +115,7 @@
                 </ul>
             </div>
         </div>
-        <hr>
-        <hr>
+     
         <div class="text-center">
             <div class="btn-group">
                 <button class="btn btn-primary" ng-click="urlDone = false">

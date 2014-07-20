@@ -106,6 +106,9 @@ ul {
     }
 }
 
+
+
+
 @black:#222;
 @dark-grey: #808080;
 
@@ -135,19 +138,22 @@ ul {
     
 }
 .btn-entry{
-    font-size: 1.5em;
-    color: @dark-grey;
+    margin-right: 10%;
+    font-size: 24px;
+    color: white;
     border: solid;
+    border-width: 1.600000023841858px;
     border-color: white !important;
     border-radius: 2px;
+    background-color: transparent !important;
     border-width:1.600000023841858px;
     margin-left: 50%;   
 }
 .btn-entry:hover{
     color: white;
-    font-size: 1.5em;
     border: solid;
-    background-color: @dark-grey;
+    background-image:none;
+    background-color: @dark-grey !important;
     border-color: white !important;
     border-radius: 2px;
     border-width:1.600000023841858px;
@@ -155,19 +161,19 @@ ul {
 }
 .btn-entry:focus{
     color: white;
-    font-size: 1.5em;
     border: solid;
-    background-color: @dark-grey;
+    background-image:none;
+    background-color: @dark-grey !important;
     border-color: white !important;
     border-radius: 2px;
     border-width:1.600000023841858px;
     margin-left: 50%;   
 }
 .btn-entry:active{
+    background-image:none;
     color: white;
-    font-size: 1.5em;
     border: solid;
-    background-color: @dark-grey;
+    background-color: @dark-grey !important;
     border-color: white;
     border-radius: 2px;
     border-width:1.600000023841858px;
@@ -209,38 +215,40 @@ body{
     background-image: none;
     border-color: white;
     text-shadow: none;
-    background-color: transparent !important;
+    
+}
+.input-vasu{
+    border-radius: 2px;
+    border-color: white;
+    border: solid;
+    background-color: transparent;
+    color: white !important;
+}
+.input-vasu:hover{
+    border-radius: 2px;
+    border-color: white;
+    border: solid;
+    background-color: @dark-grey;
+    color: white !important;
+}
+.input-vasu:focus{
+    border-radius: 2px;
+    border-color: white;
+    border: solid;
+    background-color: @dark-grey;
+    color: white !important;
+}
+.input-vasu:active{
+    border-radius: 2px;
+    border-color: white;
+    border: solid;
+    background-color: @dark-grey;
+    color: white !important;
 }
 
-.btn-primary:hover{
-    background-color: transparent !important;
-}
-.btn-primary:active{
-        border-color: white;
-    background-color: transparent !important;
+.line-vasu{
+    border:solid;
+    border-color: white;
+    border-width: 1.600000023841858px;
 }
 
-.btn-primary:focus{
-    color: @dark-grey;
-    background-color: transparent !important;
-}
-
-#branding {
-    font-size: 50px;
-    line-height: 50px;
-    color: #fff;
-    text-transform: lowercase;
-    float: left;
-}
-
-#slogan {
-    float: right;
-    font-size: 30px;
-    line-height: 140px;
-    padding-right: 50px;
-    color: #999;
-}
-
-nav + div {
-    padding-top: 150px;
-}
