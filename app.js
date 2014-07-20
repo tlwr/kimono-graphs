@@ -121,6 +121,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
                 $scope.title = apiData.name;
                 $scope.collections = apiData.results;
                 setTimeout(makeDraggable, 500);
+                setTimeout($scope.drawChart,1000);
             });
         };
         $scope.drawChart = function(){
