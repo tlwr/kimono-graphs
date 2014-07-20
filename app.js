@@ -1,6 +1,4 @@
-var apiKey = 'GokawGwMLeANRuOJA7Z6ULUnNEBvTac6';
 var apiData = null;
-var apiId = '2w3n7a8u';
 var onDragStop = function(event, ui) {
     if($(this).parent().attr('id') == 'label-list') {
         $('#label-list').droppable('disable');
@@ -20,16 +18,16 @@ var getLabel = function() {
     if($('#label-list li:first').length) {
         var label = $('#label-list li:first');
         return {
-            collection: label.attr('data-collection'),
-            property: label.attr('data-property')
+            collection: label.data('collection'),
+            property: label.data('property')
         };
     }
 };
 var getValues = function() {
     var values = [];
     $('#values-list').children().each(function(index, child) {
-        var collection = $(this).attr('data-collection');
-        var property = $(this).attr('data-property');
+        var collection = $(this).data('collection');
+        var property = $(this).data('property');
         values.push({
             collection: collection,
             property: property,
@@ -94,13 +92,12 @@ config([
 ]);
 angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
     function($scope, $http) {
-        $scope.apiId = "";
-        $scope.apiKey = "";
+        $scope.apiId = "2w3n7a8u";
+        $scope.apiKey = "GokawGwMLeANRuOJA7Z6ULUnNEBvTac6";
         $scope.connect = function() {
-            var url = "https://www.kimonolabs.com/api/" + apiId + "?apikey=" + apiKey + "&callback=JSON_CALLBACK";
+            var url = "https://www.kimonolabs.com/api/" + $scope.apiId + "?apikey=" + $scope.apiKey + "&callback=JSON_CALLBACK";
             $http.jsonp(url).then(function(response) {
                 apiData = response.data;
-                apiResp = response;
                 console.log(JSON.stringify(apiData));
                 $scope.title = apiData.name;
                 $scope.collections = apiData.results;
@@ -112,9 +109,10 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
             var lab = getLabel();
             console.log(vals);
             console.log(lab);
-			renderChart(apiData, $scope.type, vals, lab, "", "", $scope.title );
+            setTimeout(function(){
+				renderChart(apiData, $scope.type, vals, lab, $scope.labelName, "", $scope.title );
+            },150);
         };
-        $scope.connect();
         $scope.urlDone = false;
         $scope.graph = "";
         $scope.typeDone = false;
