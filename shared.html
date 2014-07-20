@@ -21,20 +21,22 @@
 </head>
 
 <body ng-app="gown" ng-controller="intro" class="container-fluid" id="gown">
-    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-        <div id="branding"><img src="icons/logo.png" /> Kimono Graphs</div>
-        <div id="slogan">
-            Graph the web.
-        </div>
+    <nav class="navbar navbar-fixed-top navbar-inverse nav-vasu" role="navigation">
+    <h1 class="title-alt">kimono graphs</h1>
+     <h6 class="sub-title-alt">Graph the web.</h6>
     </nav>
-    <div class="text-center">
-        <h2 id="title"></h2>
+    <div >
+        <h2 id="title" class="title-name" style="font-size: 75px; "></h2>
     </div>
-    <hr>
+    
     <section>
-        <div id="chart"></div>
+        <div class="chart-vasu" id="chart"></div>
     </section>
-    <input id="url"></input>
+    <section class="row">
+        <div class="col-md-2 col-md-offset-9">
+            <input class="form-control text-center share" id="url"></input>
+        </div>
+    </section>
 </body>
 
 </html>
