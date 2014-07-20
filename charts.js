@@ -103,7 +103,10 @@ function renderChart( response, chartType, values, label, xLabel, yLabel, title 
 	{ 
 		bindto: "#chart",
 		data: data, 
-		axis: axis 
+		axis: axis,
+	    transition: {
+	        duration: 300
+	    }
 	} );
 }
 
@@ -113,4 +116,3 @@ function reloadChart( response, chartType, values, label, xLabel, yLabel, title 
 
 	chart.load( data );
 }
-

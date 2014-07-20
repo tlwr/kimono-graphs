@@ -113,6 +113,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
         $scope.apiId = "3vb13dbw";
         $scope.apiKey = "989877be85a3ca05477428c8b41d4fbe";
         $scope.dirty = false;
+        $scope.getDirty = function(){return $scope.dirty};
         $scope.connect = function() {
             var url = "https://www.kimonolabs.com/api/" + $scope.apiId + "?apikey=" + $scope.apiKey + "&callback=JSON_CALLBACK";
             $http.jsonp(url).then(function(response) {
@@ -127,6 +128,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
         $scope.drawChart = function(){
             var vals = getValues();
             var lab = getLabel();
+            console.log("draw graph");
 
             if (lab === null || !vals.length) {
                 return;
@@ -137,6 +139,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
                     reloadChart(apiData, $scope.type, vals, lab, $scope.xaxis, $scope.yaxis, $scope.title);
                 },150);
             } else {
+                $("#dirtybutton").click();
                 setTimeout(function(){
                     renderChart(apiData, $scope.type, vals, lab, $scope.xaxis, $scope.yaxis, $scope.title );
                 },150);
@@ -154,7 +157,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
             }
             if(vals.length == 0) return;
             if(lab == {}) return;
-            var url = "shared.html?id=" + $scope.apiId +"&key=" + $scope.apiKey + "&labelcollection=" + lab.collection + "&labelproperty=" + label.property + "&vals=" + values.join(",") + "&xaxis=" + $scope.xaxis +"&yaxis=" + $scope.yaxis + "&title=" + $scope.title + "&type=" + $scope.type;
+            var url = "shared.html?id=" + $scope.apiId +"&key=" + $scope.apiKey + "&labelcollection=" + lab.collection + "&labelproperty=" + lab.property + "&vals=" + values.join(",") + "&xaxis=" + $scope.xaxis +"&yaxis=" + $scope.yaxis + "&title=" + $scope.title + "&type=" + $scope.type;
             window.open(url, '_blank');
         };
     }
