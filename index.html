@@ -22,40 +22,29 @@
 </head>
 
 <body ng-app="gown" ng-controller="intro" class="container-fluid" id="gown">
-     <div class="placer" ng-hide="urlDone">
-    <nav role="navigation" class="text-center">
-  
-        <h2 class="title">kimono graphs</h2>
-        <h6 class="sub-title" ng-click="credits = !credits" style="cursor:pointer;">Graph the web.
-            <div ng-show="credits">
-                Made with <span class="fa fa-fw fa-heart"></span> in California.
-                <br>
-                <a href="http://github.com/tlwr">tlwr</a>
-                <br>
-                <a href="http://github.com/dellsystem">dellsystem</a>
-                <br>
-                <a href="http://github.com/shrig94">shrig94</a>
-                <br>
-                <a href="http://github.com/vasu">vasu</a>
-            </div>
-        </h6>
-    </nav>
-    <section ng-hide="urlDone">
-        <form ng-submit="urlDone = true; connect()" id="urlForm">
-            <div class="form-group">
-                <input type="text" class="form-control input-lg" ng-model="apiId" placeholder="API ID" rows="3">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control input-lg" ng-model="apiKey" placeholder="API KEY" rows="3">
-            </div>
-      
-            <div class="text-right">
-                <button class="btn btn-primary btn-entry" ng-disabled="!apiId || !apiKey">
-                    Start
-                </button>
-            </div>
-        </form>
-    </section>
+    <div class="placer" ng-hide="urlDone">
+        <nav role="navigation" class="text-center">
+
+            <h2 class="title">kimono graphs</h2>
+            <h6 class="sub-title">Graph the web.</h6>
+        </nav>
+        <section ng-hide="urlDone">
+            <form ng-submit="urlDone = true; connect()" id="urlForm">
+                <div class="form-group">
+                    <input type="text" class="form-control input-lg" ng-model="apiId" placeholder="API ID" rows="3">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control input-lg" ng-model="apiKey" placeholder="API KEY" rows="3">
+                </div>
+
+                <div class="text-right">
+                    <button class="btn btn-primary btn-entry" ng-disabled="!apiId || !apiKey">
+                        Start
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
     <nav role="navigation" class="text-center" ng-show="urlDone">
         <h1>kimono graphs</h1>
     </nav>
@@ -76,7 +65,7 @@
                     <div class="col-md-3">
                         <input type="text" placeholder="Y Axis Label" class="form-control input-vasu" ng-model="yaxis" ng-blur="drawChart()">
                         <ul id="values-list" class="droppable list-unstyled"></ul>
-                        <input type="text" placeholder="X Axis Label" class="form-control input-vasu" ng-model="xaxis" ng-blur="drawChart()"/>
+                        <input type="text" placeholder="X Axis Label" class="form-control input-vasu" ng-model="xaxis" ng-blur="drawChart()" />
                         <ul id="label-list" class="droppable list-unstyled"></ul>
                     </div>
                     <button style="display:none;" id="dirtybutton" ng-click="dirty = !dirty"></button>
@@ -102,12 +91,7 @@
                     <li ng-repeat="(name, objects) in collections">
                         {{ name }}
                         <ul class="collections list-unstyled text-center" id="collection_{{name}}">
-                            <li ng-repeat="(property, value) in objects[0]"
-                                class="property"
-                                data-parent="collection_{{name}}"
-                                data-collection="{{ name }}"
-                                data-value="{{ value }}"
-                                data-property="{{ property }}">
+                            <li ng-repeat="(property, value) in objects[0]" class="property" data-parent="collection_{{name}}" data-collection="{{ name }}" data-value="{{ value }}" data-property="{{ property }}">
                                 {{ property }}
                             </li>
                         </ul>
@@ -116,8 +100,7 @@
                 <div class="text-center">
                     <button class="btn btn-primary btn-controls" ng-click="urlDone = false">
                         Back
-                    </button><!--
-                    --><button class="btn btn-primary btn-controls" ng-click="share()">
+                    </button><button class="btn btn-primary btn-controls" ng-click="share()">
                         Export
                     </button>
                 </div>
