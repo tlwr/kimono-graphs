@@ -84,6 +84,7 @@ $(document).ready(function() {
             var value = $(shit).data('value');
             return !isNaN(value);
         },
+        tolerance: 'touch',
         activeClass: 'active',
         drop: function(event, ui) {
             $(ui.draggable).detach().css({
@@ -99,8 +100,8 @@ config([
 ]);
 angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
     function($scope, $http) {
-        $scope.apiId = "2w3n7a8u";
-        $scope.apiKey = "GokawGwMLeANRuOJA7Z6ULUnNEBvTac6";
+        $scope.apiId = "3vb13dbw";
+        $scope.apiKey = "989877be85a3ca05477428c8b41d4fbe";
         $scope.dirty = false;
         $scope.connect = function() {
             var url = "https://www.kimonolabs.com/api/" + $scope.apiId + "?apikey=" + $scope.apiKey + "&callback=JSON_CALLBACK";
