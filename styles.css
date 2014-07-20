@@ -1,0 +1,112 @@
+.graph-buttons img {
+  margin: 10px;
+}
+.graph-buttons .btn-primary img {
+  -webkit-filter: invert(1);
+  -moz-filter: invert(1);
+  -ms-filter: invert(1);
+  filter: invert(1);
+}
+body {
+  background-color: #222222 !important;
+}
+#input-lg {
+  border-radius: 2px;
+}
+#btn-primary {
+  background-color: transparent;
+}
+#container-fluid {
+  background-color: #222222;
+}
+.btn * {
+  margin: 10px;
+}
+#collection > ul li {
+  font-size: 30px;
+}
+#collection > ul li > ul li {
+  font-size: 24px;
+}
+.placeholder {
+  font-size: 30px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  color: #ccc;
+  z-index: 10;
+}
+#graph {
+  margin: 0 auto;
+  height: 300px;
+  border: 2px solid #ccc;
+  border-top-width: 0;
+  border-right-width: 0;
+  position: relative;
+}
+#graph #values-placeholder {
+  font-size: 30px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  color: #ccc;
+  z-index: 10;
+  line-height: 300px;
+}
+#label {
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+  height: 44px;
+}
+#label-placeholder {
+  font-size: 30px;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  color: #ccc;
+  z-index: 10;
+  line-height: 44px;
+}
+.droppable {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+}
+.droppable.active {
+  background: #fbf9ee;
+}
+.droppable li {
+  padding: 7px;
+  background: #1396d8;
+  color: #fff;
+  margin: 5px 0;
+}
+.property {
+  z-index: 11;
+  cursor: pointer;
+}
+#label-list li {
+  line-height: 30px;
+}
+ul {
+  margin: 0;
+}
+#graph ul {
+  padding: 0;
+}
+#label-name {
+  position: relative;
+}
+#label-name input {
+  width: 300px;
+  margin: 20px auto;
+  text-align: center;
+}
+#title {
+  padding-bottom: 10px;
+}
+#label ul {
+  padding: 0;
+}
