@@ -4,8 +4,9 @@
 */
 
 function generateColumns( response, values, label )
-{
-	var columns = [ ];
+{	
+	var labelVals = getFormattedValues( response, 'x', label.collection, label.property, label.value );
+	var columns = [ labelVals ];
 
 	for ( var i = 0; i < values.length; i++ )
 	{
@@ -26,7 +27,7 @@ function generateAxisObject ( response, label, xLabel, yLabel )
 {
 	var axis = { };
 	var categories = getFormattedValues( response, false, label.collection, label.property, label.value );
-	axis.x = { label: xLabel, type: "category", categories: categories };
+	axis.x = { label: xLabel, type: "categorized", categories: categories };
 	axis.y = { label: yLabel };
 
 	return axis;
@@ -40,11 +41,8 @@ function generateDataObject( response, chartType, values, label )
 	var columns = generateColumns( response, values, label );
 
 	data.columns = columns;
-
-	if ( chartType != "line" )
-	{
-		data.type = chartType;
-	}
+	data.x = 'x';
+	data.type = chartType;
 
 	return data;
 }
@@ -100,14 +98,22 @@ function formatValue( value )
 function renderChart( response, chartType, values, label, xLabel, yLabel, title )
 {
 	var data = generateDataObject( response, chartType, values, label );
-	console.log(data);
 	var axis = generateAxisObject( response, label, xLabel, yLabel );
+	console.log( data );
+	console.log( axis );
 
-	var chart = c3.generate( 
+	chart = c3.generate( 
 	{ 
 		bindto: "#chart",
 		data: data, 
 		axis: axis 
 	} );
+}
+
+function reloadChart( response, chartType, values, label, xLabel, yLabel, title )
+{
+	var data = generateDataObject( response, chartType, values, label );
+
+	chart.load( data );
 }
 

@@ -137,6 +137,8 @@
 				{ collection: "collection1", property: "threes", label: "Threes" }
 			];
 			renderChart( response, "scatter", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );
+			setTimeout(function(){reloadChart( response, "line", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );}, 1500);
+			setTimeout(function(){reloadChart( response, "bar", values, label, "Stats", "Numbers", "Jordan's Historical Stats" );}, 3000);
 		} );
 
 		</script>
