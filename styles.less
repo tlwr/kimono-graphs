@@ -124,11 +124,15 @@ ul {
     margin: 10px;
 }
 
-.graph-buttons .btn-primary img {
+.graph-buttons img {
     -webkit-filter: invert(1);
     -moz-filter: invert(1);
     -ms-filter: invert(1);
     filter: invert(1);
+}
+
+.graph-buttons .btn-primary {
+    background-color: @dark-grey !important;
 }
 
 .title{
@@ -227,15 +231,38 @@ ul {
     border-width:1.600000023841858px;
 }
 
-.btn-controls:first-of-type {
-    border-right: none;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+.btn-controls:nth-of-type(odd){
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-right: none;
 }
-.btn-controls:last-of-type {
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
+
+.btn-controls:nth-of-type(even){
+border-top-left-radius: 0px;
+border-bottom-left-radius: 0px;
 }
+
+.btn-controls:not(:first-of-type), .btn-controls:not(:nth-of-type(2)) {
+    border-top: none;
+}
+
+.btn-controls:first-of-type, .btn-controls:nth-of-type(2) {
+    border-top: 1px solid white;
+}
+
+h1{
+    color: white;
+}
+h3{
+    color:@dark-grey;
+}
+
+.well{
+background-color: transparent;
+background-image: none;
+color: white;
+}
+
 
 body{
     background-color: @black;

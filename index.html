@@ -72,25 +72,17 @@
             </div>
             <div class="col-md-3" id="collection">
                 <div class="text-center graph-buttons well">
-                    <button class="btn btn-default {{type=='bar' ? 'btn-primary' : ''}}" type="button" ng-click="type='bar';drawChart()">
+                    <button class="btn btn-controls {{type=='bar' ? 'btn-primary' : ''}}" type="button" ng-click="type='bar';drawChart()">
                         <img src="icons/bar.png" style="width:16px" />
-                    </button>
-                    <button class="btn btn-default {{type=='scatter' ? 'btn-primary' : ''}}" type="button" ng-click="type='scatter';drawChart()">
+                    </button><button class="btn btn-controls {{type=='scatter' ? 'btn-primary' : ''}}" type="button" ng-click="type='scatter';drawChart()">
                         <img src="icons/scatter.png" style="width:16px" />
-                    </button>
-                    <button class="btn btn-default {{type=='line' ? 'btn-primary' : ''}}" type="button" ng-click="type='line';drawChart()">
+                    </button><button class="btn btn-controls {{type=='line' ? 'btn-primary' : ''}}" type="button" ng-click="type='line';drawChart()">
                         <img src="icons/line.png" style="width:16px" />
-                    </button>
-                    <button class="btn btn-default {{type=='pie' ? 'btn-primary' : ''}}" type="button" ng-click="type='pie';drawChart()">
-                        <img src="icons/pie.png" style="width:16px" />
-                    </button>
-                    <button class="btn btn-default {{type=='donut' ? 'btn-primary' : ''}}" type="button" ng-click="type='donut';drawChart()">
+                    </button><button class="btn btn-controls {{type=='donut' ? 'btn-primary' : ''}}" type="button" ng-click="type='donut';drawChart()">
                         <img src="icons/donut.png" style="width:16px" />
-                    </button>
-                    <button class="btn btn-default {{type=='spline' ? 'btn-primary' : ''}}" type="button" ng-click="type='spline';drawChart()">
+                    </button><button class="btn btn-controls {{type=='spline' ? 'btn-primary' : ''}}" type="button" ng-click="type='spline';drawChart()">
                         <img src="icons/line.png" style="width:16px" />
-                    </button>
-                    <button class="btn btn-default {{type=='area-spline' ? 'btn-primary' : ''}}" type="button" ng-click="type='area-spline';drawChart()">
+                    </button><button class="btn btn-controls {{type=='area-spline' ? 'btn-primary' : ''}}" type="button" ng-click="type='area-spline';drawChart()">
                         <img src="icons/area.png" style="width:16px" />
                     </button>
                 </div>
