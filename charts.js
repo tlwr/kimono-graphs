@@ -99,9 +99,6 @@ function renderChart( response, chartType, values, label, xLabel, yLabel, title 
 {
 	var data = generateDataObject( response, chartType, values, label );
 	var axis = generateAxisObject( response, label, xLabel, yLabel );
-	console.log( data );
-	console.log( axis );
-
 	chart = c3.generate( 
 	{ 
 		bindto: "#chart",

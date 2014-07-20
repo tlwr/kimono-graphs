@@ -1,0 +1,116 @@
+.graph-buttons img{
+    margin: 10px;
+}
+
+.graph-buttons .btn-primary img {
+    -webkit-filter: invert(1);
+    -moz-filter: invert(1);
+    -ms-filter: invert(1);
+    filter: invert(1);
+}
+
+.btn *{
+    margin: 10px
+}
+
+#collection {
+    > ul li {
+        font-size: 30px;
+ 
+        > ul li {
+            font-size: 24px;
+        }
+    }
+}
+ 
+.placeholder {
+    font-size: 30px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: #ccc;
+    z-index: 10;
+}
+ 
+#graph {
+    @height: 300px;
+ 
+    margin: 0 auto;
+    height: @height;
+    border: 2px solid #ccc;
+    border-top-width: 0;
+    border-right-width: 0;
+    position: relative;
+    
+    #values-placeholder {
+        .placeholder;
+        line-height: @height;
+    }
+}
+ 
+#label {
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+    height: 44px;
+}
+ 
+#label-placeholder {
+    .placeholder;
+    line-height: 44px;
+}
+ 
+.droppable {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+ 
+    &.active {
+        background: #fbf9ee;
+    }
+ 
+    li {
+        padding: 7px;
+        background: #1396d8;
+        color: #fff;
+        margin: 5px 0;
+    }
+}
+ 
+.property {
+    z-index: 11;
+}
+ 
+#label-list li {
+    line-height: 30px;
+}
+ 
+ul {
+    margin: 0;
+}
+
+#graph {
+    ul {
+        padding: 0;
+    }
+}
+ 
+#label-name {
+    position: relative;
+    input {
+        width: 300px;
+        margin: 20px auto;
+        text-align: center;
+    }
+}
+ 
+#title {
+    padding-bottom: 10px;
+}
+
+#label {
+    ul {
+        padding: 0;
+    }
+}

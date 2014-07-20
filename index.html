@@ -6,11 +6,16 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="bower_components/flat-ui-official/css/flat-ui.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
     <link rel="icon" href="icon.png" />
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.8/d3.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.min.js"></script>
+    <script src="bower_components/less/dist/less-1.7.3.min.js"></script>
+    <script src="charts.js"></script>
     <script src="app.js"></script>
     <title>Dressing Gown</title>
 </head>
@@ -65,33 +70,58 @@
         </form>
     </section>
     <section ng-show="urlDone && typeDone && (!graphDone)">
+        <h1 id="api-title">{{ title }}</h1>
+        <br />
+        <br />
         <div class="row">
-            <div class="col-md-9">
-                <div class="well">
-                    <div id="graphDrop">
-                        <h4>Drop Items Here</h4>
+            <div class="col-md-8 well">
+                <div id="title">
+                    <input type="text" placeholder="Chart title" class="form-control" ng-model="title" />
+                </div>
+                <h6 class="text-center">Click an item to remove it from the chart.</h6>
+                <div id="graph">
+                    <div ng-hide="values.length" id="values-placeholder">
+                        Drag values here
                     </div>
+                    <ul id="values-list" class="droppable"></ul>
+                </div>
+                <div id="label">
+                    <div id="label-placeholder">Drag label here</div>
+                    <ul id="label-list" class="droppable"></ul>
+                </div>
+                <div id="label-name">
+                    <input type="text" placeholder="Label name" class="form-control" ng-model="labelName" />
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="well">
-                    property controls
-                </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3 well" id="collection">
+                <ul>
+                    <li ng-repeat="(name, objects) in collections">
+                        {{ name }}
+                        <ul class="collections" id="collection_{{name}}">
+                            <li ng-repeat="(property, value) in objects[0]" class="property" data-parent="collection_{{name}}" data-collection="{{ name }}" data-property="{{ property }}">
+                                {{ property }}: {{ value }}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+        <hr>
         <hr>
         <div class="text-center">
             <div class="btn-group">
                 <button class="btn btn-primary" ng-click="typeDone = false">
                     <span class="fa fa-fw fa-arrow-left"></span>
                 </button>
-                <button class="btn btn-primary" ng-click="graphDone = true">
+                <button class="btn btn-primary" ng-click="graphDone = true; drawChart()">
                     <span class="fa fa-fw fa-arrow-right"></span>
                 </button>
             </div>
         </div>
     </section>
     <section ng-show="urlDone && typeDone && graphDone">
+        <div id="chart"></div>
         <hr>
         <div class="text-center">
             <div class="btn-group">

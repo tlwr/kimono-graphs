@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="charts.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.8/d3.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css">
+		<script type="text/javascript">
+		// TEST CALL
+
+		$( document ).ready( function( )
+		{
+			var response = {"name":"hackernews","count":41,"frequency":"hourly","version":7,"newdata":true,"lastrunstatus":"success","lastsuccess":"Sun Jul 20 2014 03:27:54 GMT+0000 (UTC)","nextrun":"Sun Jul 20 2014 04:27:54 GMT+0000 (UTC)","results":{"submissions":[{"ranking":"1","num_comments":"4","author":"phenylene","num_points":"38"},{"ranking":"2","num_comments":"8","author":"arielm","num_points":"43"},{"ranking":"3","num_comments":"35","author":"poolpool","num_points":"82"},{"ranking":"4","num_comments":"16","author":"TheBiv","num_points":"109"},{"ranking":"5","num_comments":"14","author":"tbrock","num_points":"102"},{"ranking":"6","num_comments":"13","author":"NoahBuscher","num_points":"16"},{"ranking":"7","num_comments":"1","author":"showwebgl","num_points":"23"},{"ranking":"8","num_comments":"21","author":"dang","num_points":"184"},{"ranking":"9","num_comments":"63","author":"rjzzleep","num_points":"202"},{"ranking":"10","num_comments":"3","author":"sxp","num_points":"22"},{"ranking":"11","num_comments":"13","author":"SaintSal","num_points":"51"},{"ranking":"12","num_comments":"65","author":"sinak","num_points":"227"},{"ranking":"13","num_comments":"13","author":"robin_reala","num_points":"30"},{"ranking":"14","num_comments":"7","author":"rpm4321","num_points":"28"},{"ranking":"15","num_comments":"","author":"3rd3","num_points":"37"},{"ranking":"16","num_comments":"2","author":"jonbaer","num_points":"27"},{"ranking":"17","num_comments":"3","author":"yurisagalov","num_points":"27"},{"ranking":"18","num_comments":"4","author":"BobbyVsTheDevil","num_points":"30"},{"ranking":"19","num_comments":"6","author":"ntakasaki","num_points":"68"},{"ranking":"20","num_comments":"10","author":"dominotw","num_points":"31"},{"ranking":"21","num_comments":"14","author":"mousetree","num_points":"26"},{"ranking":"22","num_comments":"1","author":"drjohnson","num_points":"31"},{"ranking":"23","num_comments":"4","author":"acsillag","num_points":"16"},{"ranking":"24","num_comments":"38","author":"tomkwok","num_points":"75"},{"ranking":"25","num_comments":"6","author":"lennoff","num_points":"51"},{"ranking":"26","num_comments":"52","author":"jonbaer","num_points":"226"},{"ranking":"27","num_comments":"27","author":"TazeTSchnitzel","num_points":"164"},{"ranking":"28","num_comments":"126","author":"_prometheus","num_points":"261"},{"ranking":"29","num_comments":"12","author":"elkingtowa","num_points":"39"},{"ranking":"30","num_comments":"","author":"","num_points":""}],"other_links":[{"link_name":"Guidelines"},{"link_name":"FAQ"},{"link_name":"Lists"},{"link_name":"Bookmarklet"},{"link_name":"DMCA"},{"link_name":"News News"},{"link_name":"Bugs and Feature Requests"},{"link_name":"Y Combinator"},{"link_name":"Apply"},{"link_name":"Library"},{"link_name":"Contact"}]}};
+			var label = { collection: "submissions", property: "ranking" };
+			var values = [ 
+				{ collection: "submissions", property: "num_comments", label: "num_comments" }
+			];
+			renderChart( response, "line", values, label, "", "", "" );
+		} );
+
+		</script>
+	</head>
+
+	<body>
+		<div id="chart"></div>
+	</body>
+</html>
