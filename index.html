@@ -26,7 +26,19 @@
     <nav role="navigation" class="text-center">
   
         <h2 class="title">kimono graphs</h2>
-        <h6 class="sub-title">Graph the web.</h6>
+        <h6 class="sub-title" ng-mouseover="credits = true" ng-mouseout="credits = false" style="cursor:pointer;">Graph the web.
+            <div ng-show="credits">
+                Made with <span class="fa fa-fw fa-heart"></span> in California.
+                <br>
+                <a href="http://github.com/tlwr">tlwr</a>
+                <br>
+                <a href="http://github.com/dellsystem">dellsystem</a>
+                <br>
+                <a href="http://github.com/shrig94">shrig94</a>
+                <br>
+                <a href="http://github.com/vasu">vasu</a>
+            </div>
+        </h6>
     </nav>
     <section ng-hide="urlDone">
         <form ng-submit="urlDone = true; connect()" id="urlForm">
@@ -43,7 +55,6 @@
                 </button>
             </div>
         </form>
-        </div>
     </section>
     <nav role="navigation" class="text-center" ng-show="urlDone">
         <h1>kimono graphs</h1>
