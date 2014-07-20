@@ -48,10 +48,7 @@
         <div class="row">
             <div class="col-md-9">
                 <div class="row">
-                    <div class="col-md-2">
-                        <input type="text" placeholder="Y Axis Label" class="form-control" ng-model="yaxis" ng-blur="drawChart()">
-                    </div>
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div id="title">
                             <input type="text" placeholder="Chart title" class="form-control" ng-model="title" ng-blur="drawChart()" />
                         </div>
@@ -65,7 +62,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-3">
+                        <input type="text" placeholder="Y Axis Label" class="form-control" ng-model="yaxis" ng-blur="drawChart()">
                         <ul id="values-list" class="droppable list-unstyled"></ul>
                     </div>
                 </div>

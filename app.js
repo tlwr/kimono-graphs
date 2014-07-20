@@ -79,11 +79,21 @@ $(window).click(function(event){
     }
 });
 $(document).ready(function() {
-    $('.droppable').droppable({
-        accept: function (shit) {
-            var value = $(shit).data('value');
+    $('#values-list').droppable({
+        accept: function (item) {
+            var value = $(item).data('value');
             return !isNaN(value);
         },
+        tolerance: 'touch',
+        activeClass: 'active',
+        drop: function(event, ui) {
+            $(ui.draggable).detach().css({
+                top: 0,
+                left: 0,
+            }).appendTo(this);
+        },
+    });
+    $('#label-list').droppable({
         tolerance: 'touch',
         activeClass: 'active',
         drop: function(event, ui) {
@@ -111,6 +121,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
                 $scope.title = apiData.name;
                 $scope.collections = apiData.results;
                 setTimeout(makeDraggable, 500);
+                setTimeout($scope.drawChart,1000);
             });
         };
         $scope.drawChart = function(){
