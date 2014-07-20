@@ -23,6 +23,7 @@ var getLabel = function() {
             property: label.data('property')
         };
     }
+    return null;
 };
 var getValues = function() {
     var values = [];
@@ -79,6 +80,10 @@ $(window).click(function(event){
 });
 $(document).ready(function() {
     $('.droppable').droppable({
+        accept: function (shit) {
+            var value = $(shit).data('value');
+            return !isNaN(value);
+        },
         activeClass: 'active',
         drop: function(event, ui) {
             $(ui.draggable).detach().css({
@@ -110,9 +115,12 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
         $scope.drawChart = function(){
             var vals = getValues();
             var lab = getLabel();
-            if(vals.length == 0) return;
-            if(lab == {}) return;
-            if($scope.dirty){
+
+            if (lab === null || !vals.length) {
+                return;
+            }
+
+            if ($scope.dirty) {
                 setTimeout(function(){
                     reloadChart(apiData, $scope.type, vals, lab, $scope.xaxis, $scope.yaxis, $scope.title);
                 },150);
