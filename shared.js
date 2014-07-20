@@ -24,6 +24,7 @@ var type = params.type;
 var title = params.title;
 
 function kimonoCallback(data){
+    document.getElementById("title").innerText = title;
     var lab = {};
     lab.collection = labelcollection;
     lab.property = labelproperty;
