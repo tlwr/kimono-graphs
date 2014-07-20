@@ -84,6 +84,9 @@
                     <button class="btn btn-default {{type=='donut' ? 'btn-primary' : ''}}" type="button" ng-click="type='donut';drawChart()">
                         <img src="icons/donut.png" style="width:16px" />
                     </button>
+                    <button class="btn btn-default {{type=='spline' ? 'btn-primary' : ''}}" type="button" ng-click="type='spline';drawChart()">
+                        <img src="icons/line.png" style="width:16px" />
+                    </button>
                 </div>
                 <ul class="well list-unstyled">
                     <li ng-repeat="(name, objects) in collections">
