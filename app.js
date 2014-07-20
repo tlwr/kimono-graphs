@@ -84,6 +84,7 @@ $(document).ready(function() {
             var value = $(shit).data('value');
             return !isNaN(value);
         },
+        tolerance: 'touch',
         activeClass: 'active',
         drop: function(event, ui) {
             $(ui.draggable).detach().css({
