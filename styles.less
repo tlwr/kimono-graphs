@@ -308,11 +308,14 @@ color: white;
 }
 
 
-body{
+body {
     background-color: @black;
-    background-image: url('bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+
+    &.image {
+        background-image: url('bg.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
 
 .placer{
