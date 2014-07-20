@@ -2,14 +2,12 @@
 <html>
 
 <head>
-
-<link rel="stylesheet" type="text/css" href="styles.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="bower_components/flat-ui-official/css/flat-ui.css" />
     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/c3/0.1.29/c3.css">
-    
+    <link rel="stylesheet/less" type="text/css" href="styles.less" />
     <link rel="icon" href="icon.png" />
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
@@ -20,9 +18,6 @@
     <script src="bower_components/less/dist/less-1.7.3.min.js"></script>
     <script src="charts.js"></script>
     <script src="app.js"></script>
-    
-
-
     <title>Dressing Gown</title>
 </head>
 
@@ -31,7 +26,7 @@
         <h2>Dressing Gown</h2>
         <h6>like Kimono, but cozier&hellip;</h6>
     </nav>
-  
+    <hr>
     <section ng-hide="urlDone">
         <form ng-submit="urlDone = true; connect()" id="urlForm">
             <div class="form-group">
@@ -40,7 +35,7 @@
             <div class="form-group">
                 <input type="text" class="form-control input-lg" ng-model="apiKey" placeholder="API KEY" rows="3">
             </div>
-             
+            <hr>
             <div class="text-center">
                 <button class="btn btn-primary" ng-disabled="!apiId || !apiKey">
                     <span class="fa fa-fw fa-arrow-right"></span>
