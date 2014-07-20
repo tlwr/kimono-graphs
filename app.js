@@ -80,6 +80,10 @@ $(window).click(function(event){
 });
 $(document).ready(function() {
     $('.droppable').droppable({
+        accept: function (shit) {
+            var value = $(shit).data('value');
+            return !isNaN(value);
+        },
         activeClass: 'active',
         drop: function(event, ui) {
             $(ui.draggable).detach().css({

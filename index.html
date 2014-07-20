@@ -91,7 +91,12 @@
                     <li ng-repeat="(name, objects) in collections">
                         {{ name }}
                         <ul class="collections" id="collection_{{name}}">
-                            <li ng-repeat="(property, value) in objects[0]" class="property" data-parent="collection_{{name}}" data-collection="{{ name }}" data-property="{{ property }}">
+                            <li ng-repeat="(property, value) in objects[0]"
+                                class="property"
+                                data-parent="collection_{{name}}"
+                                data-collection="{{ name }}"
+                                data-value="{{ value }}"
+                                data-property="{{ property }}">
                                 {{ property }}
                             </li>
                         </ul>
