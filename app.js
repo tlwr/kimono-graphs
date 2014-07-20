@@ -23,7 +23,7 @@ var getLabel = function() {
             property: label.data('property')
         };
     }
-    return {};
+    return null;
 };
 var getValues = function() {
     var values = [];
@@ -112,7 +112,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
             var vals = getValues();
             var lab = getLabel();
 
-            if (!lab.length || !vals.length) {
+            if (lab === null || !vals.length) {
                 return;
             }
 
