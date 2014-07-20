@@ -72,8 +72,14 @@
                     <div class="col-md-3">
                         <input type="text" placeholder="Y Axis Label" class="form-control input-vasu" ng-model="yaxis" ng-blur="drawChart()">
                         <ul id="values-list" class="droppable list-unstyled"></ul>
+                        <div class="text-center dark-grey" style="margin-top: -25px;" id="collectionslabel">
+                            <span class="fa fa-fw fa-arrow-up"></span> Drag Collections.
+                        </div>
                         <input type="text" placeholder="X Axis Label" class="form-control input-vasu" ng-model="xaxis" ng-blur="drawChart()" />
                         <ul id="label-list" class="droppable list-unstyled"></ul>
+                        <div class="text-center dark-grey" style="margin-top: -25px;" id="labellabel">
+                            <span class="fa fa-fw fa-arrow-up"></span> Drag a Label.
+                        </div>
                     </div>
                     <button style="display:none;" id="dirtybutton" ng-click="dirty = !dirty"></button>
                 </div>

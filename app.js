@@ -2,6 +2,9 @@ var apiData = null;
 var onDragStop = function(event, ui) {
     if($(this).parent().attr('id') == 'label-list') {
         $('#label-list').droppable('disable');
+        $("#labellabel").fadeOut();
+    } else if($(this).parent().attr("id") == "values-list") {
+        $("#collectionslabel").fadeOut();
     }
     angular.element("#gown").scope().drawChart();
 };
@@ -74,6 +77,9 @@ $(window).click(function(event){
         $("#"+parnode).append(element);
         if(par == "label-list"){
             $("#label-list").droppable("enable");
+            $("#labellabel").fadeIn();
+        } else if($("#values-list").children().length == 0) {
+                $("#collectionslabel").fadeIn();
         }
         angular.element("#gown").scope().drawChart();
     }
