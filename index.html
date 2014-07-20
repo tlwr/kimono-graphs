@@ -22,13 +22,12 @@
 </head>
 
 <body ng-app="gown" ng-controller="intro" class="container-fluid" id="gown">
-     <div class="placer">
+     <div class="placer" ng-hide="urlDone">
     <nav role="navigation" class="text-center">
   
         <h2 class="title">kimono graphs</h2>
         <h6 class="sub-title">Graph the web.</h6>
     </nav>
-
     <section ng-hide="urlDone">
         <form ng-submit="urlDone = true; connect()" id="urlForm">
             <div class="form-group">
@@ -40,36 +39,33 @@
       
             <div class="text-right">
                 <button class="btn btn-primary btn-entry" ng-disabled="!apiId || !apiKey">
-                    Enter
+                    Start
                 </button>
             </div>
         </form>
         </div>
     </section>
+    <nav role="navigation" class="text-center" ng-show="urlDone">
+        <h1>kimono graphs</h1>
+    </nav>
     <section ng-show="urlDone">
         <div class="row">
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-9">
                         <div id="title">
-                            <input type="text" placeholder="Chart title" class="form-control input-vasu" ng-model="title" ng-blur="drawChart()" />
+                            <input type="text" id="titleInput" placeholder="Chart title" class="form-control input-vasu" ng-model="title" ng-blur="drawChart()" />
                         </div>
                         <div id="chart" ng-show="dirty" style="width: 600px; height: 360px; margin-left: auto; margin-right: auto; border-radius: 2px; border-color: white;"></div>
                         <div ng-hide="dirty" style="width: 600px; height: 360px; margin-left: auto; margin-right: auto; border-radius: 2px; border-color: white; display: flex; justify-content: center; align-items:center;">
                             <h3>Waiting for Chart Inputs.</h3>
                         </div>
-                        <div id="label">
-                            <div>
-                                <ul id="label-list" class="droppable list-unstyled"></ul>
-                            </div>
-                            <div id="label-name">
-                                <input type="text" placeholder="X Axis Label" class="form-control input-vasu" ng-model="xaxis" ng-blur="drawChart()"/>
-                            </div>
-                        </div>
                     </div>
                     <div class="col-md-3">
                         <input type="text" placeholder="Y Axis Label" class="form-control input-vasu" ng-model="yaxis" ng-blur="drawChart()">
                         <ul id="values-list" class="droppable list-unstyled"></ul>
+                        <input type="text" placeholder="X Axis Label" class="form-control input-vasu" ng-model="xaxis" ng-blur="drawChart()"/>
+                        <ul id="label-list" class="droppable list-unstyled"></ul>
                     </div>
                     <button style="display:none;" id="dirtybutton" ng-click="dirty = !dirty"></button>
                 </div>
@@ -113,17 +109,14 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
-        </div>
-     
-        <div class="text-center">
-            <div class="btn-group">
-                <button class="btn btn-primary" ng-click="urlDone = false">
-                    <span class="fa fa-fw fa-arrow-left"></span>
-                </button>
-                <button class="btn btn-primary" ng-click="share()">
-                    <span class="fa fa-fw fa-share"></span>
-                </button>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-controls" ng-click="urlDone = false">
+                        Back
+                    </button><!--
+                    --><button class="btn btn-primary btn-controls" ng-click="share()">
+                        Export
+                    </button>
+                </div>
             </div>
         </div>
     </section>

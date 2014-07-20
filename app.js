@@ -157,7 +157,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
             }
             if(vals.length == 0) return;
             if(lab == {}) return;
-            var url = "shared.html?id=" + $scope.apiId +"&key=" + $scope.apiKey + "&labelcollection=" + lab.collection + "&labelproperty=" + label.property + "&vals=" + values.join(",") + "&xaxis=" + $scope.xaxis +"&yaxis=" + $scope.yaxis + "&title=" + $scope.title + "&type=" + $scope.type;
+            var url = "shared.html?id=" + $scope.apiId +"&key=" + $scope.apiKey + "&labelcollection=" + lab.collection + "&labelproperty=" + lab.property + "&vals=" + values.join(",") + "&xaxis=" + $scope.xaxis +"&yaxis=" + $scope.yaxis + "&title=" + $scope.title + "&type=" + $scope.type;
             window.open(url, '_blank');
         };
     }
