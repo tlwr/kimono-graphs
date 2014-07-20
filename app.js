@@ -23,6 +23,7 @@ var getLabel = function() {
             property: label.data('property')
         };
     }
+    return null;
 };
 var getValues = function() {
     var values = [];
@@ -78,7 +79,22 @@ $(window).click(function(event){
     }
 });
 $(document).ready(function() {
-    $('.droppable').droppable({
+    $('#values-list').droppable({
+        accept: function (item) {
+            var value = $(item).data('value');
+            return !isNaN(value);
+        },
+        tolerance: 'touch',
+        activeClass: 'active',
+        drop: function(event, ui) {
+            $(ui.draggable).detach().css({
+                top: 0,
+                left: 0,
+            }).appendTo(this);
+        },
+    });
+    $('#label-list').droppable({
+        tolerance: 'touch',
         activeClass: 'active',
         drop: function(event, ui) {
             $(ui.draggable).detach().css({
@@ -94,8 +110,8 @@ config([
 ]);
 angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
     function($scope, $http) {
-        $scope.apiId = "2w3n7a8u";
-        $scope.apiKey = "GokawGwMLeANRuOJA7Z6ULUnNEBvTac6";
+        $scope.apiId = "3vb13dbw";
+        $scope.apiKey = "989877be85a3ca05477428c8b41d4fbe";
         $scope.dirty = false;
         $scope.connect = function() {
             var url = "https://www.kimonolabs.com/api/" + $scope.apiId + "?apikey=" + $scope.apiKey + "&callback=JSON_CALLBACK";
@@ -105,14 +121,18 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
                 $scope.title = apiData.name;
                 $scope.collections = apiData.results;
                 setTimeout(makeDraggable, 500);
+                setTimeout($scope.drawChart,1000);
             });
         };
         $scope.drawChart = function(){
             var vals = getValues();
             var lab = getLabel();
-            if(vals.length == 0) return;
-            if(lab == {}) return;
-            if($scope.dirty){
+
+            if (lab === null || !vals.length) {
+                return;
+            }
+
+            if ($scope.dirty) {
                 setTimeout(function(){
                     reloadChart(apiData, $scope.type, vals, lab, $scope.xaxis, $scope.yaxis, $scope.title);
                 },150);
