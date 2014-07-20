@@ -113,6 +113,8 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
         $scope.apiId = "3vb13dbw";
         $scope.apiKey = "989877be85a3ca05477428c8b41d4fbe";
         $scope.dirty = false;
+        $scope.xaxis = "X Axis";
+        $scope.yaxis = "Y Axis";
         $scope.getDirty = function(){return $scope.dirty};
         $scope.connect = function() {
             var url = "https://www.kimonolabs.com/api/" + $scope.apiId + "?apikey=" + $scope.apiKey + "&callback=JSON_CALLBACK";
@@ -128,7 +130,6 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
         $scope.drawChart = function(){
             var vals = getValues();
             var lab = getLabel();
-            console.log("draw graph");
 
             if (lab === null || !vals.length) {
                 return;
@@ -136,7 +137,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
 
             if ($scope.dirty) {
                 setTimeout(function(){
-                    reloadChart(apiData, $scope.type, vals, lab, $scope.xaxis, $scope.yaxis, $scope.title);
+                    renderChart(apiData, $scope.type, vals, lab, $scope.xaxis, $scope.yaxis, $scope.title);
                 },150);
             } else {
                 $("#dirtybutton").click();
