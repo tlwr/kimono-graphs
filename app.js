@@ -3,6 +3,7 @@ var onDragStop = function(event, ui) {
     if($(this).parent().attr('id') == 'label-list') {
         $('#label-list').droppable('disable');
     }
+    angular.element("#gown").scope().drawChart();
 };
 var makeDraggable = function() {
     if($('.property').length) {
@@ -73,6 +74,7 @@ $(window).click(function(event){
         if(par == "label-list"){
             $("#label-list").droppable("enable");
         }
+        angular.element("#gown").scope().drawChart();
     }
 });
 $(document).ready(function() {
@@ -94,6 +96,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
     function($scope, $http) {
         $scope.apiId = "2w3n7a8u";
         $scope.apiKey = "GokawGwMLeANRuOJA7Z6ULUnNEBvTac6";
+        $scope.dirty = false;
         $scope.connect = function() {
             var url = "https://www.kimonolabs.com/api/" + $scope.apiId + "?apikey=" + $scope.apiKey + "&callback=JSON_CALLBACK";
             $http.jsonp(url).then(function(response) {
@@ -107,16 +110,33 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http",
         $scope.drawChart = function(){
             var vals = getValues();
             var lab = getLabel();
-            console.log(vals);
-            console.log(lab);
-            setTimeout(function(){
-				renderChart(apiData, $scope.type, vals, lab, $scope.labelName, "", $scope.title );
-            },150);
+            if(vals.length == 0) return;
+            if(lab == {}) return;
+            if($scope.dirty){
+                setTimeout(function(){
+                    reloadChart(apiData, $scope.type, vals, lab, $scope.xaxis, $scope.yaxis, $scope.title);
+                },150);
+            } else {
+                setTimeout(function(){
+                    renderChart(apiData, $scope.type, vals, lab, $scope.xaxis, $scope.yaxis, $scope.title );
+                },150);
+            }
         };
         $scope.urlDone = false;
-        $scope.graph = "";
-        $scope.typeDone = false;
+        $scope.type = "line";
         $scope.graphDone = false;
+        $scope.share = function(){
+            var vals = getValues();
+            var lab = getLabel();
+            var values = [];
+            for(var i = 0; i < vals.length; i++){
+                values.push(vals[i].collection + "|" + vals[i].property);
+            }
+            if(vals.length == 0) return;
+            if(lab == {}) return;
+            var url = "shared.html?id=" + $scope.apiId +"&key=" + $scope.apiKey + "&labelcollection=" + lab.collection + "&labelproperty=" + label.property + "&vals=" + values.join(",") + "&xaxis=" + $scope.xaxis +"&yaxis=" + $scope.yaxis + "&title=" + $scope.title + "&type=" + $scope.type;
+            window.open(url, '_blank');
+        };
     }
 ]);
 angular.module("gown.services", []);

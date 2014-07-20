@@ -21,7 +21,7 @@
     <title>Dressing Gown</title>
 </head>
 
-<body ng-app="gown" ng-controller="intro" class="container-fluid">
+<body ng-app="gown" ng-controller="intro" class="container-fluid" id="gown">
     <nav role="navigation" class="text-center">
         <h2>Dressing Gown</h2>
         <h6>like Kimono, but cozier&hellip;</h6>
@@ -43,70 +43,56 @@
             </div>
         </form>
     </section>
-    <section ng-show="urlDone && (!typeDone) && (!graphDone)">
-        <form ng-submit="typeDone=true">
-            <div class="text-center graph-buttons">
-                <button class="btn btn-default {{type=='bar' ? 'btn-primary' : ''}}" type="button" ng-click="type='bar'">
-                    <img src="icons/bar.png" />
-                </button>
-                <button class="btn btn-default {{type=='scatter' ? 'btn-primary' : ''}}" type="button" ng-click="type='scatter'">
-                    <img src="icons/scatter.png" />
-                </button>
-                <button class="btn btn-default {{type=='line' ? 'btn-primary' : ''}}" type="button" ng-click="type='line'">
-                    <img src="icons/line.png" />
-                </button>
-                <button class="btn btn-default {{type=='pie' ? 'btn-primary' : ''}}" type="button" ng-click="type='pie'">
-                    <img src="icons/pie.png" />
-                </button>
-                <button class="btn btn-default {{type=='donut' ? 'btn-primary' : ''}}" type="button" ng-click="type='donut'">
-                    <img src="icons/donut.png" />
-                </button>
-            </div>
-            <hr>
-            <div class="text-center">
-                <div class="btn-group">
-                    <button class="btn btn-primary" type="button" ng-click="urlDone = false">
-                        <span class="fa fa-fw fa-arrow-left"></span>
-                    </button>
-                    <button class="btn btn-primary" ng-disabled="!type">
-                        <span class="fa fa-fw fa-arrow-right"></span>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </section>
-    <section ng-show="urlDone && typeDone && (!graphDone)">
-        <h1 id="api-title">{{ title }}</h1>
-        <br />
-        <br />
+    <section ng-show="urlDone">
         <div class="row">
-            <div class="col-md-8 well">
-                <div id="title">
-                    <input type="text" placeholder="Chart title" class="form-control" ng-model="title" />
-                </div>
-                <h6 class="text-center">Click an item to remove it from the chart.</h6>
-                <div id="graph">
-                    <div ng-hide="values.length" id="values-placeholder">
-                        Drag values here
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-2">
+                        <input type="text" placeholder="Y Axis Label" class="form-control" ng-model="yaxis" ng-blur="drawChart()">
                     </div>
-                    <ul id="values-list" class="droppable"></ul>
-                </div>
-                <div id="label">
-                    <div id="label-placeholder">Drag label here</div>
-                    <ul id="label-list" class="droppable"></ul>
-                </div>
-                <div id="label-name">
-                    <input type="text" placeholder="Label name" class="form-control" ng-model="labelName" />
+                    <div class="col-md-8">
+                        <div id="title">
+                            <input type="text" placeholder="Chart title" class="form-control" ng-model="title" ng-blur="drawChart()" />
+                        </div>
+                        <div id="chart" style="width: 600px; height: 360px; margin-left: auto; margin-right: auto;"></div>
+                        <div id="label">
+                            <div>
+                                <ul id="label-list" class="droppable list-unstyled"></ul>
+                            </div>
+                            <div id="label-name">
+                                <input type="text" placeholder="X Axis Label" class="form-control" ng-model="xaxis" ng-blur="drawChart()"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <ul id="values-list" class="droppable list-unstyled"></ul>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-3 well" id="collection">
-                <ul>
+            <div class="col-md-3" id="collection">
+                <div class="text-center graph-buttons well">
+                    <button class="btn btn-default {{type=='bar' ? 'btn-primary' : ''}}" type="button" ng-click="type='bar';drawChart()">
+                        <img src="icons/bar.png" style="width:16px" />
+                    </button>
+                    <button class="btn btn-default {{type=='scatter' ? 'btn-primary' : ''}}" type="button" ng-click="type='scatter';drawChart()">
+                        <img src="icons/scatter.png" style="width:16px" />
+                    </button>
+                    <button class="btn btn-default {{type=='line' ? 'btn-primary' : ''}}" type="button" ng-click="type='line';drawChart()">
+                        <img src="icons/line.png" style="width:16px" />
+                    </button>
+                    <button class="btn btn-default {{type=='pie' ? 'btn-primary' : ''}}" type="button" ng-click="type='pie';drawChart()">
+                        <img src="icons/pie.png" style="width:16px" />
+                    </button>
+                    <button class="btn btn-default {{type=='donut' ? 'btn-primary' : ''}}" type="button" ng-click="type='donut';drawChart()">
+                        <img src="icons/donut.png" style="width:16px" />
+                    </button>
+                </div>
+                <ul class="well list-unstyled">
                     <li ng-repeat="(name, objects) in collections">
                         {{ name }}
                         <ul class="collections" id="collection_{{name}}">
                             <li ng-repeat="(property, value) in objects[0]" class="property" data-parent="collection_{{name}}" data-collection="{{ name }}" data-property="{{ property }}">
-                                {{ property }}: {{ value }}
+                                {{ property }}
                             </li>
                         </ul>
                     </li>
@@ -117,25 +103,11 @@
         <hr>
         <div class="text-center">
             <div class="btn-group">
-                <button class="btn btn-primary" ng-click="typeDone = false">
+                <button class="btn btn-primary" ng-click="urlDone = false">
                     <span class="fa fa-fw fa-arrow-left"></span>
                 </button>
-                <button class="btn btn-primary" ng-click="graphDone = true; drawChart()">
-                    <span class="fa fa-fw fa-arrow-right"></span>
-                </button>
-            </div>
-        </div>
-    </section>
-    <section ng-show="urlDone && typeDone && graphDone">
-        <div id="chart"></div>
-        <hr>
-        <div class="text-center">
-            <div class="btn-group">
-                <button class="btn btn-primary" ng-click="graphDone = false">
-                    <span class="fa fa-fw fa-arrow-left"></span>
-                </button>
-                <button class="btn btn-primary">
-                    <span class="fa fa-fw fa-save"></span>
+                <button class="btn btn-primary" ng-click="share()">
+                    <span class="fa fa-fw fa-share"></span>
                 </button>
             </div>
         </div>
