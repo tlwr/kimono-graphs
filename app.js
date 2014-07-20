@@ -4,6 +4,7 @@ angular.module("gown.controllers", []).controller("intro", ["$scope", "$http", f
     $scope.urlParams = [];
     $scope.urlDone = false;
     $scope.graph = "";
+    $scope.typeDone = false;
     $scope.graphDone = false;
     
 }]);
