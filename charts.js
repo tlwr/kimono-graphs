@@ -113,4 +113,3 @@ function reloadChart( response, chartType, values, label, xLabel, yLabel, title 
 
 	chart.load( data );
 }
-
