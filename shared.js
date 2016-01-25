@@ -38,12 +38,12 @@ function kimonoCallback(data){
     renderChart(data, type, vals, lab, xaxis, yaxis, title );
 }
 
-var url = "https://www.kimonolabs.com/api/" + apiId + "?apikey=" + apiKey + "&callback=kimonoCallback";
+var url = "https://www.kimonolabs.com/api/" + apiId + "?apikey=" + apiKey;
 $.ajax({
     url: url,
     crossDomain: true,
-    dataType: "jsonp"
-});
+    dataType: "jsonp",
+}).then(function(data) {kimonoCallback(data)});
 
 
 // url shortner
